@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <title>Document</title>
+    <style>
+        .container{
+            background-color: white;
+            display: flex;
+            justify-content: space-around;
+        }
+        .list{
+            display: flex;
+            justify-content: space-between;
+            gap : 14px
+        }
+        span{
+            font-weight: bold;
+            text-align: center;
+        }
+        .search{
+            background-color: rgb(245, 245, 245);
+            border-radius: 50px;
+            width: 2%;
+            height: 20px;
+            padding: 0 40px;
+            margin-top: 15px;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        input {
+            width: 90%;
+            height: 100%;
+            outline: none;
+            border: none;
+            background: transparent;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+        .button{
+            width: 8px;
+            height: 8px;
+            border: 2px solid var(--color-a);
+            border-radius: 50%;
+        }
+        .nav{
+            display: flex;
+            gap : 5px
+        }
+        .margin{
+            margin-top: 6px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="container">
+        <img src="./나이키.png" alt="나이키 로고">
+        <div class="list">
+            <span>New</span>
+            <span>Men</span>
+            <span>Women</span>
+            <span>Kids</span>
+            <span>Jordan</span>
+            <span>NikeSKIMS</span>
+            <span>Sale</span>
+        </div>
+        <div class="nav">
+            <div class="search">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input type="text" placeholder="검색"/>
+            </div>
+            <i class="fa-regular fa-heart margin"></i>
+        </div>
+    </nav>
+    
+</body>
+</html>

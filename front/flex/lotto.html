@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        header{
+            display: flex;
+            justify-content: space-around;
+        }
+        nav{
+            display: flex;
+            gap : 15px;
+            margin-top: 25px;
+        }
+        main{
+            display: flex;
+            justify-content: space-between;
+        }
+        aside{
+            border: 1px solid;
+            width: 100px;
+            height: auto;
+            background-color: black;
+        }
+        article{
+            display: flex;
+            flex-direction: column;
+        }
+        footer{
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="./복 주머니.jpg" alt="복주머니" width="50" height="50">
+        <h1>로또 마켓</h1>
+        <nav>
+            <span>Home</span>
+            <span>로그인</span>
+            <span>회원가입</span>
+        </nav>
+    </header>
+    <main>
+        <aside>
+
+        </aside>
+        <article>
+            <img src="./산신령.jpg" alt="산신령이미지">
+            꿈속에서 조상님이 번호를 안 알려주셨다면? 여기서 직접 골라보세요!
+            <h1 id="lottoNumber"></h1>
+            <input type="button" value="조상님이 못다 한 말, 내가 이 번호들에 숨겨두었느니라" onclick="getLotto()">
+        </article>
+        <aside>
+
+        </aside>
+    </main>
+    <footer>
+        제작자 : 김부연
+    </footer>
+</body>
+<script>
+    function getLotto(){
+        let lotto = []
+        while(lotto.length < 6){
+            let num = Math.floor(Math.random() * 45) + 1
+            if(!lotto.includes(num)){
+                lotto.push(num)
+            }
+        }
+        document.getElementById('lottoNumber').innerHTML = lotto
+        console.log(lotto)
+    }
+    
+</script>
+</html>

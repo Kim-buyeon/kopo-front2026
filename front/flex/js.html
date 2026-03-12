@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="cellphone" id="cellphone">
+    <button onclick="inputHandler()">입력</button>
+</body>
+<script>
+    function inputHandler(){
+        let inputValue = document.getElementById("cellphone").value
+        inputValue = inputValue.replace(/-/g,'')
+        console.log(inputValue)
+    }
+</script>
+</html>
