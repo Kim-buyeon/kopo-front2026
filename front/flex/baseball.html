@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <style>
+      nav {
+        display: flex;
+        justify-content: space-between;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th {
+        background-color: #f7f7f7;
+        height: 40px;
+        color: #666;
+        font-size: 13px;
+        font-weight: normal;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+      }
+      .team-cell {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 5px;
+        gap: 2px;
+        height: 100%;
+      }
+      .team-logo {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+
+      .wpct-text {
+        color: #3e6ed1;
+        font-weight: bold;
+      }
+      .rank-text {
+        font-weight: bold;
+      }
+      span {
+        padding-bottom: 14px;
+        font-size: 18px;
+        color: #000;
+      }
+      .tr-style-2 {
+        background-color: #f7f7f7;
+      }
+      td {
+        height: 44px;
+        border-bottom: 1px solid #f4f4f4;
+        font-size: 13px;
+        text-align: center;
+        box-sizing: border-box;
+      }
+      #total-rank {
+        font-weight: bold;
+      }
+      .fa-chevron-right {
+        font-size: 8px;
+        color: gray;
+        margin-left: 5px;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <span id="total-rank">종합순위</span>
+        <span>※ 2026년 3월 14일 기준</span>
+      </nav>
+    </header>
+    <main>
+      <article>
+        <table id="baseball-table">
+          <thead>
+            <tr>
+              <th>순위</th>
+              <th>팀</th>
+              <th>경기</th>
+              <th>승</th>
+              <th>무</th>
+              <th>패</th>
+              <th>승률</th>
+              <th>게임차</th>
+              <th>연속</th>
+            </tr>
+          </thead>
+          <tbody id="baseball-body"></tbody>
+        </table>
+      </article>
+    </main>
+  </body>
+  <script>
+    function renderTable(teams) {
+      const tbody = document.getElementById("baseball-body");
+      teams.forEach((team) => {
+        const tr = document.createElement("tr");
+        if (team.rank.rank % 2 == 0) {
+          tr.classList.add("tr-style-2");
+        }
+        tr.innerHTML = `
+          <td class="rank-test">${team.rank.rank}</td>
+          <td>
+            <div class="team-cell">
+              <img class="team-logo" src="${team.imageUrl}" alt="${team.shortName}"/>
+              ${team.shortName}
+              <i class="fa-solid fa-chevron-right" style="font-size: 10px; color: #ccc; margin-left: 4px;"></i>
+            </div>
+          </td>
+          <td>${team.rank.game}</td>
+          <td>${team.rank.win}</td>
+          <td>${team.rank.draw}</td>
+          <td>${team.rank.loss}</td>
+          <td class="wpct-text">${team.rank.wpct}</td>
+          <td>${team.rank.gb}</td>
+          <td>${team.rank.streak}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+    const jsonUrl =
+      "https://prof-jwchi.github.io/kopo-front2026/Json/baseball.json";
+    fetch(jsonUrl)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        const teams = data["list"];
+        renderTable(teams);
+      })
+      .catch((error) => console.log("에러 발생:", error));
+  </script>
+</html>
